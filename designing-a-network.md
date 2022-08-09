@@ -45,3 +45,14 @@ VNets are built for integration with one another, hybrid connectivity using VPNs
 
 ### Supported Protocols
 VNets support TCP, UDP, and ICMP protocols
+
+## SKU
+Basic - default allow all
+Standard - default block all
+
+## How to setup a Network Security Group (NSG) for web servers
+1. Setup an Application Security Group (ASG) to host the web servers
+2. Add rules to the ASG, open ports 80 and 443 to allow http and https traffic
+3. Setup NSG by allowing traffic from any source 0.0.0.0/0 and destination as ASG.
+4. Add the web servers to the ASG.
+
