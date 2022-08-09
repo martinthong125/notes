@@ -56,3 +56,12 @@ Standard - default block all
 3. Setup NSG by allowing traffic from any source 0.0.0.0/0 and destination as ASG.
 4. Add the web servers to the ASG.
 
+## Endpoints
+
+Service Endpoint - connect to Microsoft services
+
+Private Endpoint - connect to Azure services
+
+
+
+
