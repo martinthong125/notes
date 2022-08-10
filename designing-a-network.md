@@ -56,6 +56,12 @@ Standard - default block all
 3. Setup NSG by allowing traffic from any source 0.0.0.0/0 and destination as ASG.
 4. Add the web servers to the ASG.
 
+## How to setup a NAT Gateway
+
+1. Add a NAT Gateway to public subnet
+2. Assign elastic IP to the NAT Gateway
+3. Add route in private subnet
+
 ## Endpoints
 
 Service Endpoint - connect to Microsoft services
