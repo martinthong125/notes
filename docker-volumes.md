@@ -24,3 +24,9 @@ The solution: Use Host Volumes
   ```sh
   docker run -it --name jenkins-server -v /opt/jenkins_home:/var/jenkins_home jenkins:latest /bin/bash
   ```
+
+### Resources
+
+https://github.com/microsoft/WSL/discussions/4176
+
+https://www.youtube.com/watch?v=kXb7WAl1YN4
