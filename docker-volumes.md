@@ -1,4 +1,9 @@
 # How to use docker volume (recommended)
+The problem: when using WSL2, the given named volume location might not be found. Instead, open explorer and key this in address bar.
+```sh
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
+```
+The solution: Use Host Volumes
 
 1. Named Volumes (Linux) -persistent data even when container is stopped/deleted
 
