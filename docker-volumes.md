@@ -1,5 +1,5 @@
 # How to use docker volume (recommended)
-The problem: when using WSL2, the given named volume location might not be found. Instead, open explorer and key this in address bar.
+The problem: when using WSL2, docker inspect <volume>, the Mountpoint location might not be found. Instead, open explorer and key this in address bar.
 ```sh
 \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
 ```
@@ -8,21 +8,24 @@ The solution: Use Host Volumes
 1. Named Volumes (Linux) -persistent data even when container is stopped/deleted
 
   ```sh
-  docker run -it --name jenkins-server -v jenkins_home:/var/jenkins_home jenkins:latest /bin/bash
+  docker run --name jenkins-server1 -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:latest
   ```
 
-2. Host Volumes (WSL2, Linux) -share with other concurrently running containers
+2. Host Volumes (WSL2, Linux) -share with other concurrently running containers aka high availability
 
-  Create a folder /jenkins_home in /opt and change permissions to folder
+  Create a folder /opt/jenkins_home and change permissions of the folder
   
   ```sh
   sudo mkdir /opt/jenkins_home
   sudo chmod 777 /opt/jenkins_home
   ```
   
-  Run the container
+  Run the containers
   ```sh
-  docker run -it --name jenkins-server -v /opt/jenkins_home:/var/jenkins_home jenkins:latest /bin/bash
+  docker run --name jenkins-server2 -p 8081:8080 -p 50001:50000 -v /opt/jenkins_home:/var/jenkins_home jenkins/jenkins:latest
+  ```
+  ```sh
+  docker run --name jenkins-server3 -p 8082:8080 -p 50002:50000 -v /opt/jenkins_home:/var/jenkins_home jenkins/jenkins:latest
   ```
 
 ### Resources
