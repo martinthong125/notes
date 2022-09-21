@@ -22,3 +22,10 @@ or
 ```sh
 wsl --shutdown
 ```
+
+4. Check by launching Ubuntu and key in the commands
+
+```sh
+lscpu # check CPU allocated
+free -m # check memory allocated
+```
