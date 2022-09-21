@@ -11,6 +11,9 @@ Solution:
 [wsl2]
 memory=4GB # Limits VM memory in WSL 2 
 processors=4 # Makes the WSL 2 VM use 4 virtual processors
+# swap=4GB # recommended 25% of RAM
+# swapfile=C:\\temp\\wsl-swap.vhdx
+
 ```
 
 3. Open Powershell with admin rights and key in
@@ -29,3 +32,7 @@ wsl --shutdown
 lscpu # check CPU allocated
 free -m # check memory allocated
 ```
+
+
+Resources:
+https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig
