@@ -82,9 +82,7 @@ Examples:
 
 Steps:
 1. Find the #IP Address and Subnet. Get CIDR value and identify its column. Eg. /27 has group size 32 and subnet of 224.
-2. Find Network ID and Next Network. Increase IP in steps of group size til it passed the IP given. 0,32,64,96. 88 is before 64 and after 96.
+2. Find Network ID and Next Network. Increase IP in steps of group size till it passed the IP given. Eg. 0,32,64,96. 88 is before 64 and after 96.
 3. Find Broadcast IP = Next Network - 1
 4. Find First Host IP = Network ID + 1
 5. Find Last Host IP = Broadcast IP - 1
-
-
