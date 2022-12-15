@@ -18,9 +18,9 @@ https://www.youtube.com/watch?v=4lxvVj7wlZw
 
 Setup your global name and email
 
-git global --user.name "<name>"
+git global --user.name "\<name\>"
 
-git global --user.email "<email>"
+git global --user.email "\<email\>"
 
 Setup ssh connection with ssh-keygen
 
@@ -28,23 +28,23 @@ Setup ssh connection with ssh-keygen
 
 git init
 
-git clone <url>
+git clone \<url\>
 
 git status
 
-git add . / <filename>
+git add . / \<filename\>
 
-git rest HEAD <filename>
+git rest HEAD \<filename\>
 
 git commit -m "message"
 
-git branch <new branch name>
+git branch \<new branch name\>
 
-git checkout <branch name>
+git checkout \<branch name\>
 
-git merge <branch>
+git merge \<branch\>
 
-git rebase <branch>
+git rebase \<branch\>
 
 git fetch
 
