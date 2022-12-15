@@ -48,4 +48,3 @@ AWS user name: ec2-user or admin or root or ubuntu
 17. create a directory: <b>mkdir</b>
 18. remove an empty directory: <b>rm</b>
 19. remove a non-empty directory: <b>rm -rf</b>
-20.
