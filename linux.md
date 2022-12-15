@@ -23,9 +23,9 @@ AWS user name: ec2-user or admin or root or ubuntu
 /var : contains variable data like mails, log files
 
 ### sub directories
+
 /usr/bin , /usr/include , /usr/lib , /usr/sbin
 /var/cache , /var/log , /var/spool , /var/tmp
-
 
 ## Commands
 
@@ -47,8 +47,5 @@ AWS user name: ec2-user or admin or root or ubuntu
 16. remove a file: <b>rm</b>
 17. create a directory: <b>mkdir</b>
 18. remove an empty directory: <b>rm</b>
-19. remove a non-empty director: <b>rm -rf</b>
-20. 
-
-
-
+19. remove a non-empty directory: <b>rm -rf</b>
+20.
