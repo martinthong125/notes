@@ -18,19 +18,19 @@ Script name end with .sh
 
 ## Execution permission
 
-chmod +x <filename>
+chmod +x \<filename\>
 
-chmod 755 <filename>
+chmod 755 \<filename\>
 
 ## Run the script
 
-./<filename>
+./\<filename\>
 
 ## Help commands
 
-whatis <command>
+whatis \<command\>
 
-man <command>
+man \<command\>
 
 ## Send gmail function?
 
@@ -42,11 +42,11 @@ uname -n #hostname
 
 ## Redirection Operators
 
-> - save to a new file
+\> - save to a new file
 
-> > - append to file
+\> \> - append to file
 
-< - to provide the input
+\< - to provide the input
 
 | - to send the output of a command to a second command
 
@@ -58,45 +58,45 @@ uname -n #hostname
 
 2: STDERR
 
-1> <filename> - stores stdout
+1\> \<filename\> - stores stdout
 
-2> <filename> - store stderr
+2\> \<filename\> - store stderr
 
-&> <filename> - store both stdout and stderr in filename
+&\> \<filename\> - store both stdout and stderr in filename
 
 ## Read a file content
 
-vi <filename>
+vi \<filename\>
 
 :set number - display line number
 
-cat -n <filename> - display content with line number
+cat -n \<filename\> - display content with line number
 
-less <filename> - can scroll content line by line
+less \<filename\> - can scroll content line by line
 
-more -n <filename> - display content up to line n
+more -n \<filename\> - display content up to line n
 
-more +n <filename> - display content from line n
+more +n \<filename\> - display content from line n
 
 ## Read a file with conditions - tail, grep, awk, sed
 
-head -n <filename> - display top n lines of filename
+head -n \<filename\> - display top n lines of filename
 
-tail -n <filename> - display bottom n lines of filename
+tail -n \<filename\> - display bottom n lines of filename
 
 To print line 6 to 12:
 
-head -12 <filename> | tail -7
+head -12 \<filename\> | tail -7
 
-awk 'NR>=6 && NR<=12 {print}' <filename>
+awk 'NR\>=6 && NR\<=12 {print}' \<filename\>
 
-sed -n '6,12p' <filename>
+sed -n '6,12p' \<filename\>
 
 ## grep command
 
 a filter command to search string in a file
 
-grep [options] '<word(s)>' filename(s)
+grep [options] '\<word(s)\>' filename(s)
 
 options
 
@@ -126,11 +126,11 @@ options
 
 -h hide the filename
 
--f replace word with a file that contains the word. eg. grep -f <searchfile> <filename>
+-f replace word with a file that contains the word. eg. grep -f \<searchfile\> \<filename\>
 
--e , repeat for all the words you want to search eg. grep -e "word1" -e "word2" -e "word3" <filename>
+-e , repeat for all the words you want to search eg. grep -e "word1" -e "word2" -e "word3" \<filename\>
 
--E , like OR. eg. grep -E "word1|word2|word3" <filename>
+-E , like OR. eg. grep -E "word1|word2|word3" \<filename\>
 
 ## Pattern is a string and it represents more than one string (regex)
 
@@ -152,9 +152,9 @@ xyz$ - end with xyz
 
 ? - the preceding character is optional or matched 1 time
 
-- - the preceding character is matched 0 or more times
+\* - the preceding character is matched 0 or more times
 
-* - the preceding character is matched 1 or more times
+\+ - the preceding character is matched 1 or more times
 
 [xyz] - matches the line having x or y or z
 
@@ -188,13 +188,13 @@ to extract parts of each line from a file, character or fields
 
 eg. cut -c 1 /etc/passwd # get the first character of every line in the file
 
-eg. cut -f 2-4 <filename> # get the second to fourth field/column of every line in the file
+eg. cut -f 2-4 \<filename\> # get the second to fourth field/column of every line in the file
 
 default field separator is tab. To change the field separator, use the -d flag
 
 eg. cut -d ':' -f 1,4 /etc/passwd --output-delimeter=" " # change field separator to ':' and output field 1 and 4 separated by space.
 
-eg. cut -sf 2 <filename> # to output field 2 when the separator is a tab. Non-tab separator lines are ignored.
+eg. cut -sf 2 \<filename\> # to output field 2 when the separator is a tab. Non-tab separator lines are ignored.
 
 ## awk command
 
@@ -208,7 +208,7 @@ httpd -v | awk -F '[ /]' '/version/ {print $4}' # 2 field separator, space and s
 
 lines are known as records in awk
 
-awk '[action]' <filename>
+awk '[action]' \<filename\>
 
 $0 - entire file
 
@@ -224,7 +224,7 @@ NF - print the number of fields
 
 short for translate. ie to translate or delete sets of characters from the input
 
-tr [options] [set1] [set2] <filename>
+tr [options] [set1] [set2] \<filename\>
 
 docker -v | cut -d ' ' -f 3 | tr -d , # cut command will change field separator to space and extract the 3rd field. Then tr command will delete the comma.
 
@@ -236,11 +236,11 @@ display output and store the output to a file. Similar to python logging
 
 useful for creating logs for shell scripting
 
-cat <filename> | tee -a <abc.log> # -a to append, without -a will overwrite abc.log
+cat \<filename\> | tee -a \<abc.log\> # -a to append, without -a will overwrite abc.log
 
 ## echo command
 
-echo <message>
+echo \<message\>
 
 echo -e "Col1\tCol2" # to activate escape character \t aka tab
 
@@ -258,11 +258,11 @@ escape characters
 
 \ escape character etc
 
-echo -n <message> # cursor will not go to the next line after printing message
+echo -n \<message\> # cursor will not go to the next line after printing message
 
 ## heredoc for multi-lines or multi-block
 
-cat << EOF
+cat \<\< EOF
 
 line 1
 
@@ -272,9 +272,9 @@ EOF
 
 ## herestring
 
-command <<< string
+command \<\<\< string
 
-tr [a-z] [A-Z] <<< $(docker -v)
+tr [a-z] [A-Z] \<\<\< $(docker -v)
 
 ## Debugging bash scripts with set command
 
@@ -286,7 +286,7 @@ set -x # print the command before executing the script
 
 set -e # exit the script if any command fails
 
-bash -x <script> # debugging the script
+bash -x \<script\> # debugging the script
 
 ## Exit status of a command
 
@@ -318,11 +318,11 @@ slicing part of the string in a variable: ${var:start:length}
 
 ## string operations on paths
 
-realpath: converts each filename argument to an absolute pathname eg. realpath <filename>
+realpath: converts each filename argument to an absolute pathname eg. realpath \<filename\>
 
-basename: strips directory information. Eg. basename <fullpath> , basename<fullpath> .py # removes .py extension.
+basename: strips directory information. Eg. basename \<fullpath\> , basename\<fullpath\> .py # removes .py extension.
 
-dirname: delete suffix with the last slash character and return the result. Eg. dirname <fullpath>
+dirname: delete suffix with the last slash character and return the result. Eg. dirname \<fullpath\>
 
 input with read command, output with echo command
 
@@ -424,15 +424,15 @@ at - one time task
 
 at HH:MM AM
 
-at> bash <script_name>
+at\> bash \<script_name\>
 
 Control + D to exit
 
-OR echo "bash <script_name>" | at HH:MM AM
+OR echo "bash \<script_name\>" | at HH:MM AM
 
 atq # see jobs
 
-atrm <job_number> # remove job
+atrm \<job_number\> # remove job
 
 crontab - running specific tasks on a regular interval
 
@@ -478,7 +478,7 @@ for loop
 
 for each in 1 2 3 # loop 3 times
 
-for ((x=1; x<=3; x++)) # C syntax
+for ((x=1; x\<=3; x++)) # C syntax
 
 ## Difference between $\* and $@
 
@@ -552,27 +552,27 @@ change field using -F option
 
 NF - number of fields, NR - number of records
 
-awk options 'pattern {action}' <filename>
+awk options 'pattern {action}' \<filename\>
 
-<cmd> | awk options 'pattern {action}'
+\<cmd\> | awk options 'pattern {action}'
 
 pattern similar to condition, without pattern action will work on every line
 
-to specify a file that contains awk script: -f <filename>
+to specify a file that contains awk script: -f \<filename\>
 
 to declare a variable: -v var=value in the BEGIN section or pattern/condition and print it in action
 
 action is repeated for each record in the file, usually print something
 
-awk '{ print $1,$3 }' <filename>
+awk '{ print $1,$3 }' \<filename\>
 
-awk '{ print NR,$1,$NF }' <filename> # show line number and print first and last field
+awk '{ print NR,$1,$NF }' \<filename\> # show line number and print first and last field
 
-awk '{ print "The line number is: ", NR, "The number of fields on this line are: ",NF }' <filename>
+awk '{ print "The line number is: ", NR, "The number of fields on this line are: ",NF }' \<filename\>
 
-awk '{ print FILENAME }' <filename> # print filename on every line
+awk '{ print FILENAME }' \<filename\> # print filename on every line
 
-awk -f <awk_script.awk> <filename>  # run the awk script using a file
+awk -f \<awk_script.awk\> \<filename\>  # run the awk script using a file
 
 BEGIN block is performed before reading the file
 
@@ -602,51 +602,51 @@ supports regex
 
 edit file without opening it
 
-sed [ options ] commands <filename>
+sed [ options ] commands \<filename\>
 
-sed -n 'p' <filename> # print the whole file with line number
+sed -n 'p' \<filename\> # print the whole file with line number
 
-sed -n '1,10p' <filename> # print line 1 to 10 with line number
+sed -n '1,10p' \<filename\> # print line 1 to 10 with line number
 
-sed -n '$p' <filename> # print the last line in the file
+sed -n '$p' \<filename\> # print the last line in the file
 
-sed '4,$d' <filename> # print only line 1 to 3. 4 onwards are deleted
+sed '4,$d' \<filename\> # print only line 1 to 3. 4 onwards are deleted
 
-sed '5,+10d' <filename> # delete line 5 and 10 additional lines after.
+sed '5,+10d' \<filename\> # delete line 5 and 10 additional lines after.
 
-sed -i '4,6d' <filename> # -i perform the operation on the file
+sed -i '4,6d' \<filename\> # -i perform the operation on the file
 
-sed -i.bak '3,$d' <filename> # -i.bak backup the file and then perform the operation. You can choose the backup extension.
+sed -i.bak '3,$d' \<filename\> # -i.bak backup the file and then perform the operation. You can choose the backup extension.
 
-sed -n '/<word/string>/p' <filename> # search for word or string in the file
+sed -n '/\<word/string\>/p' \<filename\> # search for word or string in the file
 
-sed -n -e '/<word1>/p' -e '/word2/p'<filename> # search for word1 and word2 in the file
+sed -n -e '/\<word1\>/p' -e '/word2/p'\<filename\> # search for word1 and word2 in the file
 
-sed -e ' /^#/d ; /^$/d ' <filename> # delete comments and then delete empty lines
+sed -e ' /^#/d ; /^$/d ' \<filename\> # delete comments and then delete empty lines
 
 sed -n "/$search/p" serverList.txt # use double quotes for searching with a variable
 
-sed -n '/<word>/!d' <filename> # ! will negate the search result. ie delete the lines that does not have the <word>
+sed -n '/\<word\>/!d' \<filename\> # ! will negate the search result. ie delete the lines that does not have the \<word\>
 
-sed 's/<old>/<new>/' <filename> # search for <old> and replace it with <new> 1 time
+sed 's/\<old\>/\<new\>/' \<filename\> # search for \<old\> and replace it with \<new\> 1 time
 
-sed 's/<old>/<new>/i' <filename> # search for <old> case-insensitive and replace it with <new> 1 time
+sed 's/\<old\>/\<new\>/i' \<filename\> # search for \<old\> case-insensitive and replace it with \<new\> 1 time
 
-sed 's/<old>/<new>/g' <filename> # search for <old> and replace it with <new> for all instance
+sed 's/\<old\>/\<new\>/g' \<filename\> # search for \<old\> and replace it with \<new\> for all instance
 
-sed 's/<old>/<new>/2' <filename> # search for <old> and replace it with <new> for the 2nd instance
+sed 's/\<old\>/\<new\>/2' \<filename\> # search for \<old\> and replace it with \<new\> for the 2nd instance
 
-sed '/<search>/s/<old>/<new>/' <filename> # search for <search> and substitute <old> and replace it with <new> 1 time
+sed '/\<search\>/s/\<old\>/\<new\>/' \<filename\> # search for \<search\> and substitute \<old\> and replace it with \<new\> 1 time
 
-sed '1i <header to be inserted>' <filename> # 1i means insert before line 1. The content is <header to be inserted>
+sed '1i \<header to be inserted\>' \<filename\> # 1i means insert before line 1. The content is \<header to be inserted\>
 
-sed '$a <message>' <filename> # $a means append after the last line. The content is <message>
+sed '$a \<message\>' \<filename\> # $a means append after the last line. The content is \<message\>
 
-sed '3d' <filename> # delete the 3rd line in file
+sed '3d' \<filename\> # delete the 3rd line in file
 
-sed '/<word>/d' <filename> # search for <word> and delete the line with the <word>
+sed '/\<word\>/d' \<filename\> # search for \<word\> and delete the line with the \<word\>
 
-sed -n '/p[ou]t/p' <filename> # regex in search, match both put and pot.
+sed -n '/p[ou]t/p' \<filename\> # regex in search, match both put and pot.
 
 regex in sed: special characters
 
@@ -674,18 +674,18 @@ $ # dollar matches the end of the line
 
 () # select the word you want to match a certain number of times
 
-sed -i '/^$/d' <filename> # delete empty lines in file
+sed -i '/^$/d' \<filename\> # delete empty lines in file
 
-sed -i '/p[you]t/d' <filename> # matches pyt, pot, put
+sed -i '/p[you]t/d' \<filename\> # matches pyt, pot, put
 
-sed -i '/p[a-o]t/d' <filename> # matches pat to pot
+sed -i '/p[a-o]t/d' \<filename\> # matches pat to pot
 
-sed -i '/p[a-ox-z]t/d' <filename> # matches pat to pot and pxt to pzt
+sed -i '/p[a-ox-z]t/d' \<filename\> # matches pat to pot and pxt to pzt
 
-sed -i '/This\{3\}\b/d' <filename> # matches with 3 s, \b - space
+sed -i '/This\{3\}\b/d' \<filename\> # matches with 3 s, \b - space
 
-sed -i '/This\{3,4\}\b/d' <filename> # matches with 3 or 4 s \b - space
+sed -i '/This\{3,4\}\b/d' \<filename\> # matches with 3 or 4 s \b - space
 
-sed -i '/This\{3,\}\b/d' <filename> # matches with 3 or more s \b - space
+sed -i '/This\{3,\}\b/d' \<filename\> # matches with 3 or more s \b - space
 
-sed -i '/\(This\)\{2\}\b/d' <filename> # matches This 2 times
+sed -i '/\(This\)\{2\}\b/d' \<filename\> # matches This 2 times
