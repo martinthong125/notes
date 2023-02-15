@@ -46,7 +46,7 @@ git status
 
 git add . / \<filename\>
 
-git rest HEAD \<filename\>
+git reset HEAD \<filename\>
 
 git commit -m "message"
 
@@ -65,6 +65,8 @@ git pull origin main / branch
 git push origin main / branch
 
 git remote -v
+
+git push origin --delete <branch_name>
 
 .gitignore file - add folders/files inside that you don't want git to track in the repo
 
