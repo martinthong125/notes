@@ -14,6 +14,18 @@ Extracted from:
 
 https://www.youtube.com/watch?v=4lxvVj7wlZw
 
+## Detailed workflow commands on how to commit feature to main
+
+1. git checkout -b feature
+2. Work on feature branch, after many commits, completed the feature
+3. To merge feature branch to main branch with one new commit, in feature branch
+   1. git rebase -i main # changing commits in feature branch
+   2. Leave first line as pick and change the rest to squash
+   3. Type in new commit message
+   4. git rebase main # pull new commits from main and put feature commits above it
+   5. git checkout main
+   6. git merge feature # get a one line commit main
+
 ## Git
 
 Setup your global name and email
