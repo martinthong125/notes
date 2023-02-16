@@ -1,3 +1,9 @@
+## Change Time Zone
+
+Go to name > Configure
+
+Select Singapore
+
 ## Reset build number to 1
 
 Go to Manage Jenkins > Script Console
