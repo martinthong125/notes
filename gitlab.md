@@ -6,7 +6,9 @@ Create a branch to develop your feature
 
 Commit regularly for sub feature
 
-Before merging branch to main, do a rebase from main at branch.
+Before merging branch to main, you may want to do a squash commit, ie combine a few commits to one.
+
+Do a rebase from main at branch.
 
 Do a merge (request)
 
@@ -25,6 +27,16 @@ https://www.youtube.com/watch?v=4lxvVj7wlZw
    4. git rebase main # pull new commits from main and put feature commits above it
    5. git checkout main
    6. git merge feature # get a one line commit main
+
+## How to do a squash commit
+
+1. Run the command to do an interactive rebase where n is the number of commits:
+'''
+git rebase -i HEAD~n
+'''
+2. Leave the pick on the first line and replace pick with squash on the other lines.
+3. Rewrite commit message
+4. git push -f (optional)
 
 ## Git
 
@@ -69,6 +81,18 @@ git remote -v
 git push origin --delete <branch_name>
 
 .gitignore file - add folders/files inside that you don't want git to track in the repo
+
+## git clone sub-directory only
+
+git init
+
+git remote add origin <YourRepoUrl>
+
+git config core.sparseCheckout true
+
+git sparse-checkout set <YourSubfolderName>
+
+git pull origin <YourBranchName>
 
 ## Merge or rebase? 
 
