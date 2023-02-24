@@ -86,11 +86,11 @@ git push origin --delete <branch_name>
 
 git init
 
-git remote add origin <YourRepoUrl>
+git remote add origin \<YourRepoUrl\>
 
 git config core.sparseCheckout true
 
-git sparse-checkout set <YourSubfolderName>
+git sparse-checkout set \<YourSubfolderName\>
 
 git pull origin <YourBranchName>
 
