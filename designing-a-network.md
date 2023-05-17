@@ -1,4 +1,4 @@
-# Design a network
+# Design a network - Azure
 
 1. Determine IP CIDR
   - Select a Classless Inter-Domain Routing (CIDR) notation that allows for growth and integration
@@ -24,7 +24,7 @@ Public IP addressing (IPv4 and IPv6) so that resources can have public connectiv
 ### Peering
 Peering between Azure VNets
 
-### Networ Gateway
+### Network Gateway
 Gateway subnets to make VPN connections
 
 ### Monitoring
