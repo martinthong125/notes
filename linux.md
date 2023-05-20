@@ -48,4 +48,4 @@ AWS user name: ec2-user or admin or root or ubuntu
 17. create a directory: <b>mkdir</b>
 18. remove an empty directory: <b>rm</b>
 19. remove a non-empty directory: <b>rm -rf</b>
-20. create a symbolic link for python3.10: sudo ln -s /usr/bin/python3.10 /usr/bin/python
+20. create a symbolic link for python3.10: <b>sudo ln -s /usr/bin/python3.10 /usr/bin/python</b>
