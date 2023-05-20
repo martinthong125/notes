@@ -33,6 +33,9 @@ switch - move data within networks with Mac Add only
 | 80   | HTTP             |
 | 443  | HTTPS            |
 | 3306 | MYSQL            |
+| 4444 | GALERA           |
+| 4567 | GALERA           |
+| 4568 | GALERA           |
 
 
 # Terms
