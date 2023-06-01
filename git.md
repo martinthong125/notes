@@ -235,6 +235,14 @@ When you are working in a team and want to merge your code to main branch but th
 
 `git commit -m "Initial empty commit"`
 
+## Discard changes to a file
+
+`git checkout -- <file_path>`
+
+## Discard all changes
+
+`git checkout -- .`
+
 ## Gitlab
 
 Add ssh keys to gitlab
