@@ -26,6 +26,10 @@ https://ohmyz.sh/
 2. Syntax Highlighting
 3. Install a theme
 
+## Terminal open VS code
+
+https://www.freecodecamp.org/news/how-to-open-visual-studio-code-from-your-terminal/
+
 ## Others
 
 Use alias
