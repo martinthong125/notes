@@ -34,9 +34,9 @@ https://www.youtube.com/watch?v=4lxvVj7wlZw
 2. Work on feature branch, after many commits, the feature is completed
 3. To merge feature branch to main branch with one new commit in feature branch
    1. git checkout feature
-   2. git rebase -i HEAD~n # changing n commits in feature branch to 1
+   2. git rebase -i HEAD~n # changing n commits in feature branch to n
    3. Leave first line as pick and change the rest to squash
-   4. Type in new commit message
+   4. Type in new commit messag
    5. git pull main
    6. git rebase main # pull new commits from main and put feature commits above it
    7. git checkout main
@@ -220,6 +220,28 @@ When you are working in a team and want to merge your code to main branch but th
 ## Remove all files from staging
 
 `git reset`
+
+## Create a new branch with no files inside
+
+### create the branch new_branch
+
+`git checkout --orphan new_branch`
+
+### clear the working directory and staging area
+
+`git rm -rf .`
+
+### Make initial commit
+
+`git commit -m "Initial empty commit"`
+
+## Discard changes to a file
+
+`git checkout -- <file_path>`
+
+## Discard all changes
+
+`git checkout -- .`
 
 ## Gitlab
 

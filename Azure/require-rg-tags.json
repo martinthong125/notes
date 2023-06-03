@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "displayName": "Required Tags in Resource Groups Policy",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy enables you to enforce the required tags NAME and EMAIL in resource groups.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "martinthong125"
+    },
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "not": {
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+            },
+            {
+              "field": "tags['Name']",
+              "exists": "true"
+            },
+            {
+              "field": "tags['Email']",
+              "exists": "true"
+            }
+          ]
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
