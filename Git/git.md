@@ -199,6 +199,10 @@ When you are working in a team and want to merge your code to main branch but th
 
 `git push origin --delete <feature-branch>`
 
+### delete a remote tracking branch
+
+`git fetch origin --prune`
+
 ## Reset to the beginning of the last commit
 
 `git reset --hard HEAD`
