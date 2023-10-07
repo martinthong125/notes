@@ -4,7 +4,7 @@
 2. Choose the programming languages you use in the repo
 3. Click 'create'
 
-## What programming language choices for DevOps and Cloud Engineer?
+## What programming language to choose for DevOps and Cloud Engineer?
 
 1. Python
 2. Terraform

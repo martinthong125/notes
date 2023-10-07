@@ -36,11 +36,11 @@ https://www.youtube.com/watch?v=4lxvVj7wlZw
    1. git checkout feature
    2. git rebase -i HEAD~n # changing n commits in feature branch to n
    3. Leave first line as pick and change the rest to squash
-   4. Type in new commit messag
+   4. Type in new commit message
    5. git pull main
    6. git rebase main # pull new commits from main and put feature commits above it
    7. git checkout main
-   8. git merge feature # get a one line commit main
+   8. git rebase feature # get a one line commit main
 
 ## How to do a squash commit
 
@@ -106,11 +106,14 @@ git sparse-checkout set \<YourSubfolderName\>
 
 git pull origin <YourBranchName>
 
-## Merge or rebase? 
+## Merge or rebase?
 
 Never work on main branch
+
 Create a branch to work on your feature
+
 After finishing your feature, do a rebase and then merge to main
+
 Only rebase your own feature branch, never the main branch or branch that you share code with
 
 ## What is a pull/merge request?
@@ -147,43 +150,41 @@ When you are working in a team and want to merge your code to main branch but th
 
 `git commit -m "add <job-folder>"`
 
-## Perform a pull request for a folder in sandbox
+## Perform a pull request for a new folder in sandbox
 
-### We will first pull all the changes from upstream main branch. Then we create a new branch feature1 from main. In the feature1 branch, we delete all the folders. Then we checkout the folder we want from sandbox. Next, we add the folder to staging and commit the changes. Then we push feature1 branch to upstream. Next, go to gitlab repo and do a pull request. Merge the request after review.
+### We will first pull all the changes from upstream main branch. Then we create a new branch feature1 from main with nothing in it. Then we checkout the folder we want from sandbox. Next, we add the folder to staging and commit the changes. Then we push feature1 branch to upstream. Next, go to gitlab repo and do a pull request. Merge the request after review.
 
 1. Pull all changes from upstream
 
 `git pull upstream main`
 
-2. Checkout the feature1 branch from main
+2. Checkout the feature1 branch from main with no files inside
 
-`git checkout -b feature1 main`
+`git checkout --orphan feature1`
 
-3. Delete all folders.
-
-4. Copy <job-folder> from sandbox branch to feature1 branch
+3. Copy <job-folder> from sandbox branch to feature1 branch
 
 `git checkout sandbox -- <job-folder>`
 
-5. Add <job-folder> to staging
+4. Add <job-folder> to staging
 
 `git add .`
 
-6. Commit the changes
+5. Commit the changes
 
 `git commit -m “add <job-folder>“`
 
-7. Push feature1 branch to remote
+6. Push feature1 branch to remote
 
 `git push --set-upstream origin feature1`
 
-8. Go to gitlab repo and do a pull request.
+7. Go to gitlab repo and do a pull request.
 
-9. Select feature1 branch to merge to main.
+8. Select feature1 branch to merge to main.
 
-10. Review and submit changes.
+9. Review and submit changes.
 
-11. Merge the request.
+10. Merge the request.
 
 ## View all branches in repo
 
