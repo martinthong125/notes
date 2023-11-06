@@ -10,13 +10,17 @@ alias mkdir='mkdir -pv'
 
 alias ping='ping -c 5'
 
-alias t1='terraform init'
+alias t1='echo "Terraform init..." && terraform init'
 
-alias t2='terraform plan'
+alias t2='echo "Terraform fmt & validate..." && terraform fmt && terraform validate'
 
-alias t3='terraform apply --auto-approve'
+alias t3='echo "Terraform plan -out=tfplan.out..." && terraform plan -out=tfplan.out'
 
-alias t4='terraform destroy --auto-approve'
+alias t4='echo "Terraform apply tfplan.out..." && terraform apply tfplan.out'
+
+alias t5='echo "Terraform destroy --auto-approve..." && terraform destroy --auto-approve'
+
+alias gamend='echo "git add changes to current folder, no amend commit and push force..." && git add ./ && git commit --amend --no-edit && git push -f'
 
 alias untar='tar -zxvf '
 
