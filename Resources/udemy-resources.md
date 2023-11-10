@@ -1,9 +1,50 @@
-# List of Udemy courses
+# List of Udemy Instructors
 
-# DevOps Tools
-https://nlbsg.udemy.com/course/decodingdevops/ ; https://github.com/devopshydclub
+Great instructors with their awesome content
 
-https://www.udemy.com/course/terraform-on-aws-eks-kubernetes-iac-sre-50-real-world-demos/ ; https://github.com/stacksimplify/
+## AWS
 
-# AZ 104
-https://nlbsg.udemy.com/course/microsoft-certified-azure-administrator/ ; 
+1. Stephane Maarek
+
+## Azure
+
+1. Alan Rodrigues
+1. Scott Duffy
+
+## DevOps
+
+1. Imran Teli
+1. Kalyan Reddy Daida
+
+## Docker
+
+1. Academind
+
+## Git
+
+1. Bogdan Stashchuk
+
+## Jenkins
+
+1. Ricardo Andre Gonzalez Gomez
+
+## Linux
+
+1. AR Shankar
+
+## Networking
+
+1. Neal Davis
+
+## Powershell
+
+1. Alan Rodrigues
+
+## Python
+
+1. Hari Kammana
+
+## Terraform
+
+1. Zeal Vora
+1. Kalyan Reddy Daida
