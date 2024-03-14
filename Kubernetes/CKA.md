@@ -257,3 +257,50 @@ kubectl uncordon <node-name>
    --cert=/home/cloud_user/etcd-certs/etcd-server.crt \
    --key=/home/cloud_user/etcd-certs/etcd-server.key
    ```
+
+## kubectl commands
+
+1. kubectl get
+
+   ```
+   kubectl get nodes
+   kubectl get pods -o wide
+   kubectl get pods -o yaml
+   kubectl get pods -o --sort-by .spec.nodeName
+   kubectl get pods -n kube-system
+   kubectl get pods -n kube-system --selector k8s-app=calico-node
+   ```
+
+1. kubectl describe
+
+   ```
+   kubectl describe pod <pod-name>
+   ```
+
+1. kubectl create
+
+   ```
+   kubectl create -f <file-name>
+   kubectl create deployment <deployment-name> --image=nginx
+   kubectl create deployment <deployment-name> --image=nginx --dry-run -o yaml > <deployment-name>.yaml
+   ```
+
+1. kubectl apply
+
+   ```
+   kubectl apply -f <file-name>
+   ```
+
+1. kubectl delete
+
+   ```
+   kubectl delete pod my-pod
+   kubectl delete -f <file-name>
+   ```
+
+1. kubectl exec
+
+   ```
+   kubectl exec <pod-name> -c <container-name> -- <command>
+   kubectl exec my-pod -c busybox -- echo "Hello world!"
+   ```
