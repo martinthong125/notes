@@ -581,3 +581,169 @@ A NetworkPolicy can apply to Ingress, Egress, or both.
 **port** - Specifies one or more ports that will allow traffic.
 
 Traffic is only allowed if it matches both an allowed port and one of the from/to rules.
+
+## Service
+
+Kubernetes **Services** provide a way to expose an application running as a set of Pods.
+
+They provide an abstract way for clients to access applications without needing to be aware of the application's Pods.
+
+Clients make requests to a Service, which routes traffic to its Pods in a load-balanced fashion.
+
+Endpoints are the backend entitles to which Services route traffic. For a Service that routes traffic to multiple Pods, each Pod will have an endpoint associated with the Service.
+
+### Using K8s Services
+
+**Service Types**
+
+- ClusterIP
+- NodePort
+- LoadBalancer
+- ExternalName
+
+**ClusterIP**
+
+ClusterIP Services expose applications **inside** the cluster network. Use them when your clients will be on other Pods within the cluster.
+
+This is similar to a loadbalancer for private subnet.
+
+**NodePort**
+
+NodePort Services expose applications **outside** the cluster network. Use NodePort when applications or users will be accessing your application from outside the cluster.
+
+This is similar to a loadbalancer for public subnet.
+
+**LoadBalancer**
+
+LoadBalancer Services also expose applications **outside** the cluster network, but they use an **external cloud load balancer** to do so. This service type only works with cloud platforms that include load balancing functionality.
+
+### K8s Services with DNS
+
+**Service DNS Names**
+
+The Kubernetes DNS (Domain Name System) assigns DNS names to Services, allowing applications within the cluster to easily locate them.
+
+A service's fully qualified domain name has the following format:
+service-name.namespace-name.svc.cluster-domain
+
+**Service DNS and Namespaces**
+
+A Service's fully qualified domain name can be used to reach the service from within any Namespace in the cluster.
+my-service.my-namespace.svc.cluster.local
+
+**Ingress**
+
+An Ingress is a Kubernetes object that manages external access to Services in the cluster.
+
+An Ingress is capable of providing more functionality than a simple NodePort Service, such as SSL termination, advanced load balancing, or name-based virtual hosting.
+
+**Ingress Controllers**
+
+Ingress objects actually do nothing by themselves. In order for Ingresses to do anything, you must install one or more Ingress controllers.
+
+There are a variety of Ingress Controllers available - all of which implement different methods for providing external access to your Services.
+
+**Routing to a Service**
+
+Ingresses define a set of **routing rules**. A routing rule's properties determine to which requests it applies.
+
+Each rule has a set of **paths**, each with a **backend**. Requests matching a path will be routed to its associated backend.
+
+**Routing to a Service with a Named Port**
+
+If a Service uses a **named port**, an Ingress can also use the port's name to choose to which port it will route.
+
+## K8s Storage
+
+### Container File Systems
+
+The container file system is **ephemeral**. Files on the container's file system exist only as long as the container exists.
+
+If a container is deleted or re-created in K8s, data stored on the container file system is lost.
+
+### Volumes
+
+Many applications need a more persistent method of data storage.
+
+**Volumes** allow you to store data outside the container file system while allowing the container to access the data at runtime.
+
+This can allow data to persist beyond the life of the container.
+
+### Persistent Volumes
+
+Volumes offer a simple way to provide external storage to containers within the Pod/container spec.
+
+**Persistent Volumes** are a slightly more advanced form of Volume. They allow you to treat storage as an abstract resource and consume it using your Pods.
+
+### Volume Types
+
+Both Volumes and Persistent Volumes each have a **volume type**. The volume type determines how the storage is actually handled.
+
+Various volume types support storage methods such as:
+
+- NFS
+- Cloud storage mechanisms (AWS, Azure, GCP)
+- ConfigMaps and Secrets
+- A simple directory on the K8s node
+
+### Volumes and volumeMounts
+
+Regular Volumes can be set up relatively easily within a Pod/container specification.
+
+**volumes**: In the Pod spec, these specify the storage volumes available to the Pod. They specify the volume type and other data that determines where and how the data is actually stored.
+
+**volumeMounts**: In the container spec, these reference the volumes in the Pod spec and provide a mouthPath (the location on the file system where the container process will access the volume data).
+
+### Sharing Volumes Between Containers
+
+You can use volumeMounts to mount the same volume to multiple conainers within the same Pod.
+
+This is a powerful way to have multiple containers interact with one another. For example, you could create a secondary sidecar container that processes or transforms output from another container.
+
+### Common Volume Types
+
+There are many volume types, but there are two you may want to be especially aware of.
+
+**hostPath**: Stores data in a specified directory on the K8s node.
+
+**emptyDir**: Stores data in a dynamically created location on the node. This directory exists only as long as the Pod exists on the node. The directory and the data are deleted when the Pod is removed. This volume type is very useful for simply sharing data between containers in the same Pod.
+
+### PersistentVolumes
+
+**PersistentVolumes** are K8s objects that allow you to treat storage as an abstract resource to be consumed by Pods, much like K8s treats compute resources such as memory and CPU.
+
+A PersistentVolume uses a set of attributes to describe the underlying storage resource (such as a disk or cloud storage location) which will be used to store data.
+
+### Storage Classes
+
+Storage Classes allow K8s administrators to specify the types of storage services they offer on their platform.
+
+For example, an administrator could create a StorageClass called **slow** to describe low-performance but inexpensive storage resources, and another called **fast** for high-performance but more costly resources.
+
+This would allow users to choose storage resources that fit the needs of their applications.
+
+### allowVolumeExpansion
+
+The **allowVolumeExpansion** property of a StorageClass determines whether or not the StorageClass supports the ability to resize volumes after they are created.
+
+If this property is not set to true, attempting to resize a volume that uses this StorageClass will result in an error.
+
+### reclaimPolicies
+
+A PersistentVolume's **persistentVolumeReclaimPolicy** determines how the storage resources can be reused when teh PersistentVolume's associated PersistentVolumeClaims are deleted.
+
+- **Retain**: Keeps all data. This requires an administrator to manually clean up the data and prepare the storage resource for reuse.
+
+- **Delete**: Deletes the underlying storage resource automatically (only works for cloud storage resources).
+
+### PersistenVolumeClaims
+
+A **PersistentVolumeClaim** represents a user's request for storage resources. It defines a set of attributes similar to those of a PersistentVolume (StorageClass, etc.).
+
+When a PersistentVolumeClaim is created, it will look for a PersistentVolume that is able to meet the requested criteria. If it finds one, it will automatically be **bound** to the PersistentVolume.
+
+PersistentVolumeClaims can be **mounted** to a Pod's containers just like any other volume.
+
+If the PersistentVolumeClaim is bound to a PersistentVolume, the containers will use the underlying PersistentVolume storage.
+
+You can **expand** PersistentVolumeClaims without interrupting application that are using them.
