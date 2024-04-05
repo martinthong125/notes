@@ -1,6 +1,8 @@
 # Kubernetes CKA
 
-## Set a hostname for each server
+## K8s Architecture
+
+### Set a hostname for each server
 
 ```
 sudo hostnamectl set-hostname <hostname>
@@ -10,7 +12,7 @@ sudo hostnamectl set-hostname <hostname>
 sudo hostnamectl set-hostname k8s-control
 ```
 
-## setup dns on all servers
+### setup dns on all servers
 
 ```
 sudo vi /etc/hosts
@@ -26,7 +28,7 @@ copy the following into the hosts file
 <privateIP3> <hostname3>
 ```
 
-## Namespace commands
+### Namespace commands
 
 ```
 kubectl create namespace <my-namespace>
@@ -35,20 +37,22 @@ kubectl get pods -n kube-system
 kubectl get pods --all-namespaces
 ```
 
-## Drain a k8s node - move all the pods from one node to another node
+## Cluster Management
+
+### Drain a k8s node - move all the pods from one node to another node
 
 ```
 kubectl get nodes -o wide
 kubectl drain <node-name> --ignore-daemonsets --force
 ```
 
-## Uncordoning a node - enable a node to be deployed
+### Uncordoning a node - enable a node to be deployed
 
 ```
 kubectl uncordon <node-name>
 ```
 
-## Steps to upgrade control plane node
+### Steps to upgrade control plane node
 
 1.  Drain the control plane node
 
@@ -133,7 +137,7 @@ kubectl uncordon <node-name>
     kubectl get nodes
     ```
 
-## Steps to upgrade worker node
+### Steps to upgrade worker node
 
 1. Drain the node from the control plane node
 
@@ -202,7 +206,7 @@ kubectl uncordon <node-name>
    kubectl get nodes
    ```
 
-## Backup etcd
+### Backup etcd
 
 1. Look up the value for the key cluster.name in the etcd cluster
 
@@ -224,7 +228,7 @@ kubectl uncordon <node-name>
    --key=/home/cloud_user/etcd-certs/etcd-server.key
    ```
 
-## Restore etcd
+### Restore etcd
 
 1. Restore the etcd data from the backup (this command spins up a temporary etcd cluster, saving the data from the backup file to a new data directory in the same location where the previous data directory was)
 
@@ -305,21 +309,23 @@ kubectl uncordon <node-name>
    kubectl exec my-pod -c busybox -- echo "Hello world!"
    ```
 
-## Role-based Access Control (RBAC)
+## Kubernetes Object Management
+
+### Role-based Access Control (RBAC)
 
 A **Role** defines permissions within a particular namespace, and a **ClusterRole** defines permissions not specific to a single namespace.
 
 **RoleBinding** and **ClusterRoleBinding** are objects that connect Roles and ClusterRoles to users.
 
-## Service Accounts
+### Service Accounts
 
 A **service account** is an account used by container processes within pods to authenicate with the K8s API.
 
-## ConfigMaps
+### ConfigMaps
 
 ConfigMaps store data in the form of a key-value map. ConfigMap data can be passed to your container applications.
 
-## Secrets
+### Secrets
 
 Secrets are similar to ConfigMaps but are designed to store sensitive data, such as passwords or API keys, more securely. They are created and used similarly to ConfigMaps.
 
@@ -329,17 +335,17 @@ The secret value must be base64-encoded.
 echo -n '<secret-value>'| base64
 ```
 
-## Environment Variables
+### Environment Variables
 
 You can pass ConfigMap and Secret data to your containers as environment variables. These variables will be visible to your container process at runtime.
 
-## Configuration Volumes
+### Configuration Volumes
 
 Configuration data from ConfigMaps and Secrets can also be passed to containers in the form of mounted volumes. This will cause the configuration data to appear in files available to the container file system.
 
 Each top-level key in the configuration data will appear as a file containing all keys below that top-level key.
 
-## Generate an htpasswd file and store it as a secret
+### Generate an htpasswd file and store it as a secret
 
 1. Generate an htpasswd file
 
@@ -371,7 +377,9 @@ Each top-level key in the configuration data will appear as a file containing al
    kubectl exec <container1> -- curl -u user:<PASSWORD> <CONTAINER2_IP>
    ```
 
-## Container Resources
+## Pods and Containers
+
+### Container Resources
 
 Resource Requests - define an amount of resources (such as CPU or memory) you expect a container to use.
 
@@ -381,7 +389,7 @@ CPU is measured in CPU units, which is 1/1000 of one CPU. Eg. 250m = 1/4 CPU
 
 Memory is measured in bytes. Eg. 128Mi = 128 MB
 
-## Container Health
+### Container Health
 
 K8s provides a number of features that allow you to build robust solutions, such as the ability to automatically resart unhealthy containers. To make the most of these features, K8s needs to be able to accurately determine the status of your applications. This means actively monitoring container health.
 
@@ -401,7 +409,7 @@ K8s provides a number of features that allow you to build robust solutions, such
 - They are used to determine when a container is ready to accept requests. When you have a service backed by multiple container endpoints, user traffic will not be sent to a particular pod until its containers have all passed the readiness checks defined by their readiness probes.
 - Use readiness probes to prevent user traffic from being sent to pods that are still in the process of starting up.
 
-## Restart Policies
+### Restart Policies
 
 K8s can automatically restart containers when they fail. Restart policies allow you to customize this behavior by defining when you want a pod's containers to be automatically restarted.
 
@@ -415,11 +423,11 @@ There are three possible values for a pod's restart policy in K8s: Always, OnFai
 
 **Never** - This restart policy will cause the pod's containers to never be restarted, even if the container exits or a liveness probe fails. Use this for applications that should run once and never be automatically restarted.
 
-## Multi-Container Pod
+### Multi-Container Pod
 
 In a multi-container Pod, the containers share resources such as **network** and **storage**. They can interact with one anther, working together to provide functionality.
 
-## Init containers
+### Init containers
 
 Init containers are containers that run once during the startup process of a pod. A pod can have any number of init containers, and they will each run once (in order) to completion.
 
@@ -435,7 +443,9 @@ Use cases for Init Containers
 - Communicate with another service at startup.
 - Eg. Frontend container will wait for backend container to run first before starting.
 
-## K8s Scheduling
+## Advanced Pod Allocation
+
+### K8s Scheduling
 
 **Scheduling** - The process of assigning Pods to Nodes so kubelets can run them
 
@@ -582,7 +592,7 @@ A NetworkPolicy can apply to Ingress, Egress, or both.
 
 Traffic is only allowed if it matches both an allowed port and one of the from/to rules.
 
-## Service
+## Services
 
 Kubernetes **Services** provide a way to expose an application running as a set of Pods.
 
@@ -747,3 +757,110 @@ PersistentVolumeClaims can be **mounted** to a Pod's containers just like any ot
 If the PersistentVolumeClaim is bound to a PersistentVolume, the containers will use the underlying PersistentVolume storage.
 
 You can **expand** PersistentVolumeClaims without interrupting application that are using them.
+
+## K8s Troubleshooting
+
+### Troubleshooting K8s Cluster
+
+**Kube API Server**
+
+If the **K8s API server is down**, you will not be able to use kubectl to interact with the cluster.
+
+**Possible fixes**: Make sure the docker and kubelet services are up and running on your control plane node(s).
+
+**Checking Node Status**: Check the status of your nodes to see if any of them are experiencing issues. Use _kubectl describe node_ to get more information on any nodes that are not in the _READY_ state.
+
+If a node is having problems, it may be because a **service** is down on that node.
+
+Each node runs the _kubelet_ and _container runtime_ (i.e. Docker) services.
+
+```
+systemctl status kubelet
+systemctl start kubelet
+systemctl enable kubelet
+```
+
+**Checking System Pods**
+
+In a kubeadm cluster, several K8s components run as pods in the kube-system namespace.
+
+Check the status of these components with _kubectl get pods_ and _kubectl describe pod_.
+
+```
+kubectl get pods -n kube-system
+kubectl describe pod podname -n kube-system
+```
+
+### Checking Cluster and Node Logs
+
+**Service Logs**
+
+You can check the logs for K8s-related services on each node using journalctl.
+
+```
+sudo journalctl -u kubelet
+sudo journalctl -u docker
+```
+
+**Cluster Component Logs**
+
+The Kubernetes cluster components have log output redirected to /var/log. For example:
+
+```
+/var/log/kube-apiserver.log
+/var/log/kube-scheduler.log
+/var/log/kube-controller-manager.log
+```
+
+Note that these log files may not appear for kubeadm clusters, since some components run inside containers. In that case, you can access them with _kubectl logs_
+
+### Troubleshooting Application
+
+**Checking Pod Status**
+
+You can see a Pod's status with _kubectl get pods_
+
+Use _kubectl describe pod_ to get more information about what may be going on with an unhealthy Pod.
+
+**Running Commands Inside Containers**
+
+If you need to troubleshoot what is going on inside a container, you can execute commands within the container with _kubectl exec_.
+
+```
+kubectl exec <pod-name> -c <container-name> -- command
+kubectl exec --stdin --tty <pod-name> -- /bin/sh
+```
+
+Note that you cannot use _kubectl exec_ to run any software that is not present within the container.
+
+### Checking Container Logs
+
+**Container Logging**
+
+K8s containers maintain **logs**, which you can use to gain insight into what is going on within the container.
+
+A container's log contains everything written to the standard output (stdout) and error (stderr) streams by the container process.
+
+**kubectl logs**
+
+Use the _kubectl logs_ command to view a container's logs.
+
+```
+kubectl logs <pod-name> -c <container-name>
+```
+
+### Troubleshooting K8s Networking Issues
+
+**kube-proxy and DNS**
+
+In addition to checking on your K8s networking plugin, it may be a good idea to look at kube-proxy and the K8s DNS if you are experiencing issues within the K8s cluster network.
+
+In a kubeadm cluster, the K8s DNS and kube-proxy run as Pods in the kube-system namespace.
+
+**netshoot**
+
+Tip: You can run a container in the cluster that you can use to run commands to test and gather information about network functionality.
+
+The _nicolaka/netshoot_ image is a great tool for this. This image contains a variety of networking exploration and troubleshooting tools.
+
+Create a container running this image, and then use _kubectl exec_ to explore away!
