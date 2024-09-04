@@ -1,0 +1,5 @@
+[user]
+	name = Martin Thong
+	email = martin.thong@company.com
+[init]
+	defaultBranch = main
