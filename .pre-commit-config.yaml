@@ -1,0 +1,75 @@
+repos:
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: '3.2.144'
+    hooks:
+      # Cloud configuration scanner
+      - id: checkov
+        args: ['-d', '.', '--skip-path', '../']
+      # - id: checkov_container
+      # - id: checkov_diff
+      # - id: checkov_diff_container
+      - id: checkov_secrets
+      # - id: checkov_secrets_container
+
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.23 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
+    hooks:
+      # - id: terraform-fmt
+      # - id: terraform-validate
+      # - id: tflint
+      - id: shellcheck
+      - id: terragrunt-hclfmt
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: 'v1.92.0' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      # Terraform
+      - id: terraform_fmt
+      - id: terraform_validate
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Git style
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-vcs-permalinks
+      - id: forbid-new-submodules
+      - id: no-commit-to-branch
+
+      # Common errors
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        exclude: CHANGELOG.md
+      - id: check-json
+      - id: pretty-format-json
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+
+      # Cross platform
+      - id: check-case-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+      # Security
+      - id: detect-aws-credentials
+        args: ['--allow-missing-credentials']
+      - id: detect-private-key
+# # Dockerfile linter
+# - repo: https://github.com/hadolint/hadolint
+#   rev: v2.12.1-beta
+#   hooks:
+#     - id: hadolint
+#       args: [
+#         '--ignore', 'DL3007', # Using latest
+#         '--ignore', 'DL3013', # Pin versions in pip
+#         '--ignore', 'DL3027', # Do not use apt
+#         '--ignore', 'DL3059', # Docker `RUN`s shouldn't be consolidated here
+#         '--ignore', 'DL4006', # Not related to alpine
+#         '--ignore', 'SC1091', # Useless check
+#         '--ignore', 'SC2015', # Useless check
+#         '--ignore', 'SC3037', # Not related to alpine
+#       ]
