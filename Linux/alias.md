@@ -2,9 +2,9 @@
 
 https://pastebin.com/kuSr3bCA
 
-## My aliases for Ubuntu
+## My aliases for zsh
 
-alias kub='kubectl'
+alias k='kubectl'
 
 alias mkdir='mkdir -pv'
 
@@ -18,11 +18,15 @@ alias wget='wget -c '
 
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 
-alias mem5='ps auxf | sort -nr -k 4 | head -5'
+alias cpu5='ps aux | sort -nrk 3 | head -5'
 
-alias cpu5='ps auxf | sort -nr -k 3 | head -5'
+alias mem5='ps aux | sort -nrk 4 | head -5'
 
-alias reload="source ~/.bashrc"
+alias reload='echo "source zshrc and zprofile" && source ~/.zshrc && source ~/.zprofile'
+
+# My aliases for git
+
+alias gamend='echo "git add changes to current folder, no amend commit and push force..." && git add ./ && git commit --amend --no-edit && git push -f'
 
 ## My aliases for Terraform
 
@@ -32,7 +36,9 @@ alias tf2='echo "terraform fmt & validate ..." && terraform fmt && terraform val
 
 alias tf3='echo "terraform plan ..." && terraform plan'
 
-alias tf4='echo "terraform apply --auto-approve ..." && terraform apply --auto-approve'
+alias tf4='echo "terraform apply ..." && terraform apply'
+
+alias tf4a='echo "terraform apply --auto-approve ..." && terraform apply --auto-approve'
 
 alias tf5='echo "terraform destroy ..." && terraform destroy'
 
@@ -44,10 +50,8 @@ alias tg2='echo "terragrunt hclfmt & Terragrunt hclvalidate ..." && terragrunt h
 
 alias tg3='echo "terragrunt plan ..." && terragrunt plan'
 
-alias tg4='echo "terragrunt apply --auto-approve ..." && terragrunt apply --auto-approve'
+alias tg4='echo "terragrunt apply ..." && terragrunt apply'
+
+alias tg4a='echo "terragrunt apply --auto-approve ..." && terragrunt apply --auto-approve'
 
 alias tg5='echo "terragrunt destroy ..." && terragrunt destroy'
-
-# My aliases for git
-
-alias gamend='echo "git add changes to current folder, no amend commit and push force..." && git add ./ && git commit --amend --no-edit && git push -f'
