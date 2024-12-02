@@ -2,14 +2,14 @@ Situation:
 
 Windows laptop with WSL2 becomes unresponsive after some usage. This is due to the resources allocated to WSL2 not deallocated even after use.
 
-Solution: 
+Solution:
 
 1. Create a file .wslconfig at c:\Users\<username>\.wslconfig
 2. Copy and paste the configuration into the file.
 
 ```sh
 [wsl2]
-memory=4GB # Limits VM memory in WSL 2 
+memory=4GB # Limits VM memory in WSL 2
 processors=4 # Makes the WSL 2 VM use 4 virtual processors
 # swap=4GB # recommended 25% of RAM
 # swapfile=C:\\temp\\wsl-swap.vhdx

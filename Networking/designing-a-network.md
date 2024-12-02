@@ -67,7 +67,3 @@ Standard - default block all
 Service Endpoint - connect to Microsoft services
 
 Private Endpoint - connect to Azure services/resources
-
-
-
-

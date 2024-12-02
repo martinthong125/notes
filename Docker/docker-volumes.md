@@ -14,12 +14,12 @@ The solution: Use Host Volumes
 2. Host Volumes (WSL2, Linux) -share with other concurrently running containers aka high availability
 
   Create a folder /opt/jenkins_home and change permissions of the folder
-  
+
   ```sh
   sudo mkdir /opt/jenkins_home
   sudo chmod 777 /opt/jenkins_home
   ```
-  
+
   Run the containers
   ```sh
   docker run --name jenkins-server2 -p 8081:8080 -p 50001:50000 -v /opt/jenkins_home:/var/jenkins_home jenkins/jenkins:lts
