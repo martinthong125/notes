@@ -1,0 +1,7 @@
+alt-tab
+blue-snooze
+docker
+hiddenbar
+iterm2
+powershell
+raycast
