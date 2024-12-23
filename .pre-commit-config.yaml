@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '3.2.144'
+    rev: '3.2.326'
     hooks:
       # Cloud configuration scanner
       - id: checkov
@@ -12,7 +12,7 @@ repos:
       # - id: checkov_secrets_container
 
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.23 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
+    rev: v0.1.24 # Get the latest from: https://github.com/gruntwork-io/pre-commit/releases
     hooks:
       # - id: terraform-fmt
       # - id: terraform-validate
@@ -21,14 +21,14 @@ repos:
       - id: terragrunt-hclfmt
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: 'v1.92.0' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: 'v1.96.2' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       # Terraform
       - id: terraform_fmt
       - id: terraform_validate
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       # Git style
       - id: check-added-large-files
