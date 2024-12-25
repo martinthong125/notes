@@ -5,16 +5,29 @@
     path = ~/.gitconfig-gitlab.txt
 [includeIf "gitdir:/Users/martin.thong/Documents/github/"]
     path = ~/.gitconfig-github.txt
-
 [core]
+	editor = code --wait
+	autocrlf = input
 	excludesfile = /Users/martin.thong/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[merge]
+	tool = vscode
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = "code --wait --diff  "
 [pager]
 	branch = false
+[pull]
+	rebase = true
 [alias]
+	alias = config --global --get-regexp alias
+	amend = commit -a --amend --no-edit
+	bra = branch -a
+	co = checkout
+	edit = config --global --edit
+	fop = fetch origin --prune
+	hist = log -n 10 --oneline
 	lg = "!f() { git -c color.ui=always log --pretty=format:\"%C(auto,yellow)%h%Creset %C(auto,green)%<(15,trunc)%an%Creset %C(auto, cyan reverse)%<(12,trunc)%ar%Creset %s\" --graph -n20 $@ | sed -e \"s/\\[[-A-Z0-9]*\\]/$(tput setaf 172)&$(tput sgr0)/g\";      }; f"
+	pr = pull --rebase
+	st = status
+	sts = status -s -b
