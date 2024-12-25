@@ -5,3 +5,7 @@ hiddenbar
 iterm2
 powershell
 raycast
+rectangle
+shottr
+windows-app
+zoom
