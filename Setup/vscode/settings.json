@@ -1,0 +1,9 @@
+{
+  "extensions.ignoreRecommendations": true,
+  "redhat.telemetry.enabled": false,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none"
+}
