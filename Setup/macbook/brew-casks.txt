@@ -1,11 +1,10 @@
 alt-tab
-blue-snooze
+bluesnooze
 docker
 hiddenbar
 iterm2
 powershell
 raycast
-rectangle
 shottr
 windows-app
 zoom

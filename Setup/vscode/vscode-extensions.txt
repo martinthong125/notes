@@ -1,0 +1,12 @@
+aaron-bond.better-comments
+streetsidesoftware.code-spell-checker
+ms-azuretools.vscode-docker
+hashicorp.terraform
+visualstudioexptteam.vscodeintellicode
+ms-kubernetes-tools.vscode-kubernetes-tools
+yzhang.markdown-all-in-one
+pkief.material-icon-theme
+ms-vscode.powershell
+esbenp.prettier-vscode
+ms-python.python
+redhat.vscode-yaml
