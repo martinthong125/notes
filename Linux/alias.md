@@ -20,7 +20,11 @@ alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 
 alias cpu5='ps aux | sort -nrk 3 | head -5'
 
-alias mem5='ps aux | sort -nrk 4 | head -5'
+<!-- alias mem5='ps aux | sort -nrk 4 | head -5' -->
+
+mem5() {
+ps auxf | sort -nr -k 4 | head -5
+}
 
 alias reload='echo "source zshrc and zprofile" && source ~/.zshrc && source ~/.zprofile'
 
